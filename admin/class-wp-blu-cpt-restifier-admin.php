@@ -109,4 +109,14 @@ class Wp_Blu_Cpt_Restifier_Admin {
 			$post_type->rest_controller_class = 'WP_REST_Posts_Controller';
 		}
 	}
+
+	public function blu_custom_taxonomy_rest_support(  ) {
+		global $wp_taxonomies;
+
+		foreach ($wp_taxonomies as $taxonomy_key => $taxonomy) {
+			$taxonomy->show_in_rest = true;
+			$taxonomy->rest_base = $taxonomy_key;
+			$taxonomy->rest_controller_class = 'WP_REST_Terms_Controller';
+		}
+	}
 }
